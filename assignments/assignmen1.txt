@@ -1,0 +1,80 @@
+Question
+useState to update the state of Component
+Products Component  which have a List of Product
+id name price
+we have to Update the Price of the Product and display
+1.write component for List of Product means  array of Products
+2.write a function to DisplayProducts
+3.Write a function to Update Only Price of Product
+
+
+
+Here's a step-by-step example of using the useState hook to manage a list of products and display them after updating:
+ 
+ 
+jsx
+import React, { useState } from 'react';
+ 
+function ProductList() {
+  // Initialize the state with an empty array of products
+  const [products, setProducts] = useState([
+    { id: 1, name: 'Product 1', price: 10.99 },
+    { id: 2, name: 'Product 2', price: 9.99 },
+    { id: 3, name: 'Product 3', price: 12.99 },
+  ]);
+ 
+  // Function to add a new product
+  const addProduct = () => {
+    const newProduct = { id: 4, name: 'Product 4', price: 11.99 };
+    setProducts([...products, newProduct]);
+  };
+ 
+  // Function to update a product
+  const updateProduct = (id, newName, newPrice) => {
+    const updatedProducts = products.map((product) => {
+      if (product.id === id) {
+        return { ...product, name: newName, price: newPrice };
+      }
+      return product;
+    });
+    setProducts(updatedProducts);
+  };
+ 
+  // Function to delete a product
+  const deleteProduct = (id) => {
+    const filteredProducts = products.filter((product) => product.id !== id);
+    setProducts(filteredProducts);
+  };
+ 
+  return (
+<div>
+<h1>Product List</h1>
+<ul>
+        {products.map((product) => (
+<li key={product.id}>
+            {product.name} - ${product.price}
+<button onClick={() => updateProduct(product.id, 'Updated Product', 15.99)}>
+              Update
+</button>
+<button onClick={() => deleteProduct(product.id)}>Delete</button>
+</li>
+        ))}
+</ul>
+<button onClick={addProduct}>Add Product</button>
+</div>
+  );
+}
+ 
+export default ProductList;
+ 
+ 
+Here's a step-by-step explanation of the code:
+ 
+1. We initialize the state with an empty array of products using the useState hook.
+2. We define three functions: addProduct, updateProduct, and deleteProduct. These functions update the state by adding, updating, or deleting products.
+3. We use the map method to render a list of products. Each product is displayed with its name, price, and two buttons: "Update" and "Delete".
+4. When the "Update" button is clicked, the updateProduct function is called with the product's ID, new name, and new price. The function updates the state by mapping over the products and updating the corresponding product.
+5. When the "Delete" button is clicked, the deleteProduct function is called with the product's ID. The function updates the state by filtering out the product with the matching ID.
+6. The "Add Product" button calls the addProduct function, which adds a new product to the state.
+ 
+When you run the application, you'll see a list of products with buttons to update and delete each product. When you click the "Update" button, the product's name and price will be updated. When you click the "Delete" button, the product will be removed from the list. When you click the "Add Product" button, a new product will be added to the list.
