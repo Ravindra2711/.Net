@@ -78,3 +78,8 @@ Here's a step-by-step explanation of the code:
 6. The "Add Product" button calls the addProduct function, which adds a new product to the state.
  
 When you run the application, you'll see a list of products with buttons to update and delete each product. When you click the "Update" button, the product's name and price will be updated. When you click the "Delete" button, the product will be removed from the list. When you click the "Add Product" button, a new product will be added to the list.
+
+
+veena.keshavalu@capgemini.com
+Mob: 9742444414
+ 
